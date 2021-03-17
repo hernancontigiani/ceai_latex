@@ -1,28 +1,28 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{People Behavior Tracking (PBT)} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
-\posgrado{Carrera de Especialización en Internet de las Cosas} 
-%\posgrado{Carrera de Especialización en Intelegencia Artificial}
+%\posgrado{Carrera de Especialización en Internet de las Cosas} 
+\posgrado{Carrera de Especialización en Inteligencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Hernán Contigiani} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Urbano Pasquinel}
+\pertenenciaDirector{Globant} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Globant}
+\empresaCliente{Globant}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -32,9 +32,9 @@
 \juradoTres{Nombre y Apellido (3)}
 \pertenenciaJurTres{pertenencia (3)}
  
-\fechaINICIO{25 de agosto de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlanificacion{13 de octubre de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{22 de agosto de 2021}		%Fecha de defensa pública del trabajo final
+\fechaINICIO{5 de marzo de 2021}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlanificacion{23 de abril de 2021} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{---}		%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -61,13 +61,13 @@
 \begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
-1.1      & Avances en alguna cosa                                          & dd/mm/aaaa \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                     & dd/mm/aaaa \\ \hline
+Revisión & {1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
+1.0      & Creación del documento                                          & 15/03/2021 \\ \hline
+1.1      & Avances de la planificación & 18/03/2021 \\ \hline
+%1.2      & Otro ejemplo \newline
+%		   Con texto partido \newline
+%		   En varias líneas \newline
+%		   A propósito                                                     %& dd/mm/aaaa \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de control de temperatura de un calefón, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en utilizar computer vision y deep learning para obtener información sobre el comportamiento de personas/clientes dentro de un recinto, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -102,27 +102,16 @@ Se adjunta a esta acta la planificación inicial.
 \end{table}
 
 
-
+\newpage
 
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+El sistema de monitoreo de comportamiento de personas (PBT) tiene como objetivo estudiar los movimientos que realiza una persona al ingresar a un espacio, a fin de obtener métricas sobre los lugares del local que visitó, cuánto tiempo permaneció en el recinto y si transitó por alguna zona de interés predefinida.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+Para poder cumplir con el objetivo de estudiar el comportamiento de las personas dentro de un espacio es necesario poder detectar a las distintas personas en el, realizar un seguimiento de cada una y poder identificarlas aún cuando desaparecen del espacio de visión por unos segundos.
 
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+Para poder alcanzar el objetivo planteado se debe construir un pipeline de inteligencia artificial como se observa en la Figura \ref{fig:diagBloques}, lo cuales implican un detector de personas, un tracker (seguidor) y un sistema que permita extraer características (embeddings) que luego el Engine utilizará para poder identificar personas que hayan salido del rango de visión por oclusiones o fuera de imagen.
 
 \vspace{25px}
 
@@ -133,28 +122,28 @@ La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en
 \label{fig:diagBloques}
 \end{figure}
 
-\vspace{25px}
+El objetivo principal del Engine es identificar a cada persona con un “id” único y estudiar los movimientos y que realiza dentro del reciento, como también debe resolver las siguientes problemáticas:
+\begin{itemize}
+\item Resolver que una persona salga y entre del rango de visión y sea identificada como la misma persona.
+\item Resolver las oclusiones que puedan llegar a ocurrir (personas que tapan a otras personas en el rango de visión).
+\item Mantener el id correcto entre las personas, evitar que los “id” se intercambien.
+\end{itemize}
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-\end{consigna}
+\newpage
+
+Toda la información recolectada por el Engine será enviada a una aplicación web por HTTP desarrollada en Python (Flask) la cual mostrará un dashboard con toda la información recolectada al momento. El Engine para poder realizar todo el labor mencionado necesita como entrada las personas detectadas en un video/imagen (la bounding box de cada una), un “id” tentativo entregado por el Tracker, y características (embeddings)  entregadas por un extractor. Para ello ya se estuvo trabajando y ensayando los siguientes modelos pre-entrenados:
+
+\begin{itemize}
+\item Detector: Se utilizará el modelo pre-entrenado “Yolo” como detector por excelencia para detectar personas en una imagen/video. Se utilizará la versión completa de Yolo, pero en caso de poder sacrificar precisión para ganar velocidad se utilizará una versión light.
+\item Tracker: Se utilizará el modelo pre-entrenado “DeepSort” como tracker por excelencia para asignar un primer “id” tentativo utilizando flujo óptimo, técnicas de seguimiento de patrones (Mean Shift) y un clasificador básico para resolver oclusiones momentáneas.
+\item Extractor de características: Se ensayarán diferentes alternativas como extractor de extractor  de atributos [1], , extractor de vectores de personas [2], clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
+\end{itemize}
+
+\textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 [3] y DukeMTMC-reID [4]. La métrica que se utiliza para comparar estos modelos es la “mean Average Precision” (mAP) [5].
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
-
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -163,112 +152,98 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
+Auspiciante   & Empresa EEUU      & (confidencial) 	&        	\\ \hline
 Cliente       & \clientename      &\empclientename	&        	\\ \hline
 Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
+Equipo        & (confidencial) \newline
+				(confidencial)
+			  & Globant \newline Globant
+			  & Tester  \newline IoT Engineer   	\\ \hline
 Opositores    &                   &              	&        	\\ \hline
 Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
+Nota: Por motivos de confidencialidad no puedo mencionar el nombre del auspiciante ni de los miembros del equipo.
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
- 
-Por ejemplo:
-\begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
-\end{itemize}
-
-\end{consigna}
-
-
+\newpage
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto es obtener métricas de los movimientos que realiza una persona al ingresar a un espacio, a fin de obtener los siguientes indicadores:
+\begin{itemize}
+\item Determinan cuántas personas se encuentran en el espacio de interés.
+\item Determinar zonas de interés en el espacio y determinar cuántas y cuales personas transitaron por este. Las zonas de interés se dibujarán con polígonos en la imagen que representará al espacio de interés.
+\item Determinar cuánto tiempo las personas estuvieron dentro del espacio y las diferentes zonas de interés.
+\item Determinar cuando una persona abandona el espacio.
+\end{itemize}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
+Todas las pruebas se realizarán sobre videos (mp4) públicos, en donde haya un grupo de personas que permita su estudio de comportamiento. Se utilizarán videos que se acerquen lo mayor posible a un video que podría obtenerse de una cámara de seguridad de una tienda o un espacio. En caso de que la empresa consiga videos que puedan ayudar al problema, estos no podrán compartirse a menos que la empresa lo permita y en todo caso sólo se mostrarán los resultados o métricas alcanzadas en el dashboard. El dashboard \textbf{no mostrará el streaming de video} sino una representación del espacio y las métricas sobre el comportamiento de las personas monitoreadas.
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+Para la elaboración de este proyecto la parte del pipeline correspondiente al Detector + Tracker + Extractor se ejecutará en Colab. Se consumirá un video pregrabado mp4 el cual generará un archivo JSON con todos los datos recolectados del video que serán los inputs para el Engine para que este luego los consuma finalizado este proceso. El Engine correrá en una máquina local o dispositivo dedicado utilizando como entrada el archivo de datos y la aplicación web dashboard con Flask en una máquina local o servicio en la nube conectada al Engine en real-time (a medida que el Engine consume el archivo y genera información, los resultados se verán reflejados en la App).
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
-
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
+\caption{Diagrama en bloques del sistema}
+\label{fig:diagBloques}
+\end{figure}
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item Todo el proceso que requiera GPU será ejecutado en Colab (entorno virtual gratuito de Google para ejecutar modelos de IA).
+\item Todo el proceso ejecutado en Colab no será real-time, la salida del sistema será un archivo que consuma luego el Engine.
+\item En esta fase no se invertirá en hardware, se contará con Colab para el procesamiento pesado en GPU.
+\item En esta etapa del proyecto no se realizará el deploy del sistema en ningún sistema embebido o servidor, se mantendrá todo en un entorno controlado de desarrollo (Colab + computadora personal).
+\item Se podrá obtener diferentes videos que representen un escenario clásico de un local, tienda, recinto.
+\item En esta fase no será requerido realizar corrección de imagen o deformación de los videos adquiridos, se buscará videos sin deformaciones.
+\item No se espera realizar el correcto seguimiento del 100\% de las personas, se establecerá un margen de aceptación para ello.
+\item No se espera evitar problemas que surjan por movimientos o comportamientos de las personas que salgan de lo normal esperado.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
+\begin{consigna}{red}
+Siento que pude haber sido muy repetitivo con el aspecto de Colab, pero quiero que quede bien en claro ese punto. Escucho comentarios al respecto, dudas o sugerencias.
 \end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
-
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Grupo de requerimientos asociados con el pipeline de IA:
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
+	\item Detectar y seguir personas en un video, excluir otros elementos.
+	\item Generar características que permitan luego re identificar personas perdidas.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Grupo de requerimientos asociados con el Engine:
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
+	\item Llevar el seguimiento de la persona a lo largo del recinto.
+	\item Medir el comportamiento de cada persona con diferentes áreas de interés definidas en la aplicación.
+	\item Resolver problemáticas en el seguimiento de las personas utilizando sus características.
+	\end{enumerate}
+\item Grupo de requerimientos asociados con la aplicación web:
+\begin{enumerate}
+	\item Mediante una interfaz web poder definir las zonas de interés en el espacio.
+	\item El sistema debe llevar el correcto seguimiento de la persona en el recinto durante al menos el 80\% del tiempo que circuló por el mismo (que apareció en el video).
+	\item El sistema debe garantizar que entre el 80\% y 100\% de las personas en el video fueron correctamente monitoreadas.
+	\item Poder observar en tiempo real los datos que se obtienen de cada persona y las zonas definidas.
+	\end{enumerate}
+\item Grupo de requerimientos asociados con regulaciones:
+\begin{enumerate}
+	\item Los videos utilizados no inflijan derechos de privacidad.
+	\item El sistema no asociará las personas en seguimiento con un persona física real.
+	\item Las personas en seguimiento se harán referencia con un número incremental asociado a la base de datos, sin almacenar ningún tipo de información privada.
 	\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
@@ -280,18 +255,12 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
 \begin{itemize}
-\item Manual de uso
-\item Diagrama esquemático
-\item Código fuente
-\item Diagrama de instalación
+\item Esquema del funcionamiento de cada pieza del pipeline de IA de Colab (código reservado para Globant).
+\item Esquema del funcionamiento del Engine de seguimiento (código reservado para Globant).
+\item Aplicación web para interactuar con el sistema y ejecutar los ensayos.
 \item Informe final
-
 \end{itemize}
-
-\end{consigna}
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
