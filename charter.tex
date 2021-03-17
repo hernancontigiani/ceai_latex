@@ -122,24 +122,24 @@ Para poder alcanzar el objetivo planteado se debe construir un pipeline de intel
 \label{fig:diagBloques}
 \end{figure}
 
-El objetivo principal del Engine es identificar a cada persona con un “id” único y estudiar los movimientos y que realiza dentro del reciento, como también debe resolver las siguientes problemáticas:
+El objetivo principal del Engine es identificar a cada persona con un “id” único y analizar sus movimientos dentro del reciento, como también debe resolver las siguientes problemáticas:
 \begin{itemize}
-\item Resolver que una persona salga y entre del rango de visión y sea identificada como la misma persona.
+\item Resolver que una persona salga y entre del rango de visión, el sistema la debe identificar como la misma persona.
 \item Resolver las oclusiones que puedan llegar a ocurrir (personas que tapan a otras personas en el rango de visión).
 \item Mantener el id correcto entre las personas, evitar que los “id” se intercambien.
 \end{itemize}
 
 \newpage
 
-Toda la información recolectada por el Engine será enviada a una aplicación web por HTTP desarrollada en Python, la cual mostrará un dashboard con toda la información recolectada al momento. El Engine para poder realizar todo el labor mencionado necesita como entrada las personas detectadas en un video/imagen (la bounding box de cada una), un “id” tentativo entregado por el Tracker, y características (embeddings)  entregadas por un extractor. Para ello ya se estuvo trabajando y ensayando los siguientes modelos pre-entrenados:
+Toda la información recolectada por el Engine será enviada a una aplicación web desarrollada en Python, la cual mostrará un dashboard con toda la información recolectada al momento. El Engine para poder realizar todo el labor mencionado necesita como entrada las personas detectadas en un video/imagen (la bounding box de cada una), un “id” tentativo entregado por el Tracker, y características (embeddings)  entregadas por un extractor. Para ello ya se estuvo trabajando y ensayando los siguientes modelos pre-entrenados:
 
 \begin{itemize}
 \item Detector: Se utilizará el modelo pre-entrenado “Yolo” como detector por excelencia para detectar personas en una imagen/video. Se utilizará la versión completa de Yolo, a fin de obtener la mayor precisión posible.
 \item Tracker: Se utilizará el modelo pre-entrenado “DeepSort” como tracker por excelencia para asignar un primer “id” tentativo utilizando flujo óptimo, técnicas de seguimiento de patrones (Mean Shift) y un clasificador básico para resolver oclusiones momentáneas.
-\item Extractor de características: Se ensayarán diferentes alternativas como extractor de extractor de atributos [1], extractor de vectores de personas [2], clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
+\item Extractor de características: Se ensayarán diferentes alternativas como extractor de atributos, extractor de vectores de personas, clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
 \end{itemize}
 
-\textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los modelos/pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 [3] y DukeMTMC-reID [4]. La métrica que se utiliza para comparar estos modelos es la “mean Average Precision” (mAP) [5].
+\textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los modelos/pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 y DukeMTMC-reID.
 
 
 \section{Identificación y análisis de los interesados}
@@ -158,10 +158,7 @@ Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & (confidencial) \newline
-				(confidencial)
-			  & Globant \newline Globant
-			  & Tester  \newline IoT Engineer   	\\ \hline
+Equipo        & (confidencial) 	  & Globant         & IoT Engineer   	\\ \hline
 Opositores    &                   &              	&        	\\ \hline
 Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
@@ -191,9 +188,11 @@ Para la elaboración de este proyecto la parte del pipeline correspondiente al D
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=.7\textwidth]{./Figuras/diagEjecucion.png}
-\caption{Diagrama en bloques del sistema}
+\caption{Diagrama de ejecución del sistema}
 \label{fig:diagEjecucion}
 \end{figure}
+
+\newpage
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
@@ -211,6 +210,8 @@ Para el desarrollo del presente proyecto se supone que:
 \item No se espera evitar problemas que surjan por movimientos o comportamientos de las personas que salgan de lo normal esperado.
 \end{itemize}
 
+\newpage
+
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
@@ -219,21 +220,21 @@ Para el desarrollo del presente proyecto se supone que:
 	\begin{enumerate}
 	\item Detectar y seguir personas en un video, excluir otros elementos.
 	\item Generar características que permitan luego re identificar personas perdidas.
-	\item El sistema debe entregar como resultado un archivo con los datos de deteccin, seguimiento y características en formato JSON.
+	\item El sistema debe entregar como resultado un archivo con los datos de detección, seguimiento y características en formato JSON.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con el Engine:
 	\begin{enumerate}
 	\item Consumir e interpretar los datos provenientes del pipeline de IA.
 	\item Resolver problemáticas en el seguimiento de las personas utilizando sus características.
 	\item Medir el comportamiento de cada persona con diferentes áreas de interés definidas en la aplicación.
-	\item El sistema debe entregar como resultado un JSON que toda la informacin de interés a ser consumida por la aplicacin web.
+	\item El sistema debe enviar los resultados en un JSON con toda la información de interés a ser consumida por la aplicación web.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con la aplicación web:
 \begin{enumerate}
 	\item Mediante una interfaz web poder definir las zonas de interés en el espacio.
-	\item Consumir e interpretar los datos provenientes del pipeline de IA.
-	\item El sistema debe llevar el correcto seguimiento de la persona en el recinto durante al menos el 80\% del tiempo que circuló por el mismo (que apareció en el video).
-	\item El sistema debe garantizar que entre el 80\% y 100\% de las personas en el video fueron correctamente monitoreadas.
+	\item Consumir e interpretar los datos provenientes del Engine.
+	\item Se considerará que una persona es correctamente monitoreada si al menos se mantuvo su seguimiento el 80\% del tiempo que circuló en el recinto.
+	\item Se considerará que el sistema funciona dentro de los parámetros aceptables si entre el 80\% y 100\% de las personas en el video fueron correctamente monitoreadas.
 	\item Poder observar en tiempo real los datos que se obtienen de cada persona y las zonas definidas.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con regulaciones:
@@ -273,35 +274,33 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 	\item Ensayo del extractor de características OsNet. (40hs)
 	\item Integración del extractor de características en el pipeline de detección. (40hs)
 	\item Ensayos de integración profunda del extractor con el tracker. (40hs)
-	\item Integrar al pipeline modelo para la predicción de poses de la persona. (20hs)
-	\item Armar el dataset para el entranamiento del modelo extractorcon Tensorflow (TF). (40hs)
+	\item Integrar al pipeline un modelo para la predicción de poses de la persona. (20hs)
+	\item Armar el dataset para el entrenamiento del modelo extractor con Tensorflow (TF). (40hs)
 	\item Entrenar y ensayar el modelo extractor en TF (TF). (40hs)
-	\item Comparativas entre los modelos extratores entrenados con los modelos pre-entrenados obtenidos en la web. (20hs)	
+	\item Comparativas entre los modelos extractores entrenados con los modelos pre-entrenados obtenidos en la web. (20hs)	
 	\end{enumerate}
 \item Desarrollo del Engine de seguimiento. (160hs)
 	\begin{enumerate}
-	\item Desarrollo del sistema de clustering para la reidentificación de personas. (40hs)
+	\item Desarrollo del sistema de clustering para la re identificación de personas. (40hs)
 	\item Definir las zonas de interés a partir de un JSON o archivo. (20hs)
 	\item Ubicar las personas en el plano relativo a la imagen, a fin de determinar su ubicación en el recinto (20hs)
 	
 	\item Realizar lógica de detección dentro de zonas. (20hs)
-	\item Desarrollar las APIs para integrar el Engine con dashboard o applicación web. (20hs)
-	\item Mejorar la accuracy del sistema analiizando casos de borde (40hs)	
+	\item Desarrollar las APIs para integrar el Engine con dashboard o aplicación web. (20hs)
+	\item Mejorar el accuracy del sistema analizando casos de borde (40hs)	
 	\end{enumerate}
 \item Desarrollo del dasboard/web app. (140hs)
 	\begin{enumerate}
-	\item Desarrollar la intefaz de usuario para definir las zonas de interés sobre una imagen (40hs)
+	\item Desarrollar la interfaz de usuario para definir las zonas de interés sobre una imagen (40hs)
 	\item Desarrollar las APIs de comunicación con el Engine. (20hs)
 	\item Desarrollar la interfaz de visualización de las métricas de las personas. (40hs)
-	\item Desarrollar la interfaz de visualización de la personas en la tienda en tiempo real. (40hs)
+	\item Desarrollar la interfaz de visualización de la representación de las personas en la tienda en tiempo real. (40hs)
 	\end{enumerate}
 \item Presentación del trabajo. (100hs)
 	\begin{enumerate}
 	\item Redacción del informe de avance. (20hs)
 	\item Redacción de las memorias del proyecto. (60hs)
 	\item Preparación de la presentación pública. (20hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
 	\end{enumerate}
 \end{enumerate}
 
