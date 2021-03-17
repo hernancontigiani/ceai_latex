@@ -63,7 +63,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & {1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 15/03/2021 \\ \hline
-1.1      & Avances de la planificación & 18/03/2021 \\ \hline
+1.1      & Avances de la planificación & 17/03/2021 \\ \hline
 %1.2      & Otro ejemplo \newline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
@@ -111,7 +111,7 @@ El sistema de monitoreo de comportamiento de personas (PBT) tiene como objetivo 
 
 Para poder cumplir con el objetivo de estudiar el comportamiento de las personas dentro de un espacio es necesario poder detectar a las distintas personas en el, realizar un seguimiento de cada una y poder identificarlas aún cuando desaparecen del espacio de visión por unos segundos.
 
-Para poder alcanzar el objetivo planteado se debe construir un pipeline de inteligencia artificial como se observa en la Figura \ref{fig:diagBloques}, lo cuales implican un detector de personas, un tracker (seguidor) y un sistema que permita extraer características (embeddings) que luego el Engine utilizará para poder identificar personas que hayan salido del rango de visión por oclusiones o fuera de imagen.
+Para poder alcanzar el objetivo planteado se debe construir un pipeline de inteligencia artificial como se observa en la Figura \ref{fig:diagBloques}, el cual está comformado por un detector de personas, un tracker (seguidor) y un sistema que permita extraer características (embeddings) que luego el Engine utilizará para poder identificar personas que hayan salido del rango de visión por oclusiones o fuera de imagen.
 
 \vspace{25px}
 
@@ -131,15 +131,15 @@ El objetivo principal del Engine es identificar a cada persona con un “id” �
 
 \newpage
 
-Toda la información recolectada por el Engine será enviada a una aplicación web por HTTP desarrollada en Python (Flask) la cual mostrará un dashboard con toda la información recolectada al momento. El Engine para poder realizar todo el labor mencionado necesita como entrada las personas detectadas en un video/imagen (la bounding box de cada una), un “id” tentativo entregado por el Tracker, y características (embeddings)  entregadas por un extractor. Para ello ya se estuvo trabajando y ensayando los siguientes modelos pre-entrenados:
+Toda la información recolectada por el Engine será enviada a una aplicación web por HTTP desarrollada en Python, la cual mostrará un dashboard con toda la información recolectada al momento. El Engine para poder realizar todo el labor mencionado necesita como entrada las personas detectadas en un video/imagen (la bounding box de cada una), un “id” tentativo entregado por el Tracker, y características (embeddings)  entregadas por un extractor. Para ello ya se estuvo trabajando y ensayando los siguientes modelos pre-entrenados:
 
 \begin{itemize}
-\item Detector: Se utilizará el modelo pre-entrenado “Yolo” como detector por excelencia para detectar personas en una imagen/video. Se utilizará la versión completa de Yolo, pero en caso de poder sacrificar precisión para ganar velocidad se utilizará una versión light.
+\item Detector: Se utilizará el modelo pre-entrenado “Yolo” como detector por excelencia para detectar personas en una imagen/video. Se utilizará la versión completa de Yolo, a fin de obtener la mayor precisión posible.
 \item Tracker: Se utilizará el modelo pre-entrenado “DeepSort” como tracker por excelencia para asignar un primer “id” tentativo utilizando flujo óptimo, técnicas de seguimiento de patrones (Mean Shift) y un clasificador básico para resolver oclusiones momentáneas.
-\item Extractor de características: Se ensayarán diferentes alternativas como extractor de extractor  de atributos [1], , extractor de vectores de personas [2], clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
+\item Extractor de características: Se ensayarán diferentes alternativas como extractor de extractor de atributos [1], extractor de vectores de personas [2], clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
 \end{itemize}
 
-\textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 [3] y DukeMTMC-reID [4]. La métrica que se utiliza para comparar estos modelos es la “mean Average Precision” (mAP) [5].
+\textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los modelos/pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 [3] y DukeMTMC-reID [4]. La métrica que se utiliza para comparar estos modelos es la “mean Average Precision” (mAP) [5].
 
 
 \section{Identificación y análisis de los interesados}
@@ -186,13 +186,13 @@ El propósito de este proyecto es obtener métricas de los movimientos que reali
 \label{sec:alcance}
 Todas las pruebas se realizarán sobre videos (mp4) públicos, en donde haya un grupo de personas que permita su estudio de comportamiento. Se utilizarán videos que se acerquen lo mayor posible a un video que podría obtenerse de una cámara de seguridad de una tienda o un espacio. En caso de que la empresa consiga videos que puedan ayudar al problema, estos no podrán compartirse a menos que la empresa lo permita y en todo caso sólo se mostrarán los resultados o métricas alcanzadas en el dashboard. El dashboard \textbf{no mostrará el streaming de video} sino una representación del espacio y las métricas sobre el comportamiento de las personas monitoreadas.
 
-Para la elaboración de este proyecto la parte del pipeline correspondiente al Detector + Tracker + Extractor se ejecutará en Colab. Se consumirá un video pregrabado mp4 el cual generará un archivo JSON con todos los datos recolectados del video que serán los inputs para el Engine para que este luego los consuma finalizado este proceso. El Engine correrá en una máquina local o dispositivo dedicado utilizando como entrada el archivo de datos y la aplicación web dashboard con Flask en una máquina local o servicio en la nube conectada al Engine en real-time (a medida que el Engine consume el archivo y genera información, los resultados se verán reflejados en la App).
+Para la elaboración de este proyecto la parte del pipeline correspondiente al Detector + Tracker + Extractor se ejecutará en Colab. Se consumirá un video pregrabado mp4 el cual generará un archivo JSON con todos los datos recolectados del video que serán los inputs para el Engine para que este luego los consuma finalizado este proceso. El Engine correrá en una máquina local o dispositivo dedicado utilizando como entrada el archivo de datos, y la aplicación web dashboard  en una máquina local o servicio en la nube conectada al Engine en real-time (a medida que el Engine consume el archivo y genera información, los resultados se verán reflejados en la App).
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=.7\textwidth]{./Figuras/diagEjecucion.png}
 \caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\label{fig:diagEjecucion}
 \end{figure}
 
 \section{3. Supuestos del proyecto}
@@ -205,15 +205,11 @@ Para el desarrollo del presente proyecto se supone que:
 \item Todo el proceso ejecutado en Colab no será real-time, la salida del sistema será un archivo que consuma luego el Engine.
 \item En esta fase no se invertirá en hardware, se contará con Colab para el procesamiento pesado en GPU.
 \item En esta etapa del proyecto no se realizará el deploy del sistema en ningún sistema embebido o servidor, se mantendrá todo en un entorno controlado de desarrollo (Colab + computadora personal).
-\item Se podrá obtener diferentes videos que representen un escenario clásico de un local, tienda, recinto.
+\item Se utilizá diferentes videos que representen un escenario clásico de un local, tienda, recinto.
 \item En esta fase no será requerido realizar corrección de imagen o deformación de los videos adquiridos, se buscará videos sin deformaciones.
 \item No se espera realizar el correcto seguimiento del 100\% de las personas, se establecerá un margen de aceptación para ello.
 \item No se espera evitar problemas que surjan por movimientos o comportamientos de las personas que salgan de lo normal esperado.
 \end{itemize}
-
-\begin{consigna}{red}
-Siento que pude haber sido muy repetitivo con el aspecto de Colab, pero quiero que quede bien en claro ese punto. Escucho comentarios al respecto, dudas o sugerencias.
-\end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
@@ -223,16 +219,19 @@ Siento que pude haber sido muy repetitivo con el aspecto de Colab, pero quiero q
 	\begin{enumerate}
 	\item Detectar y seguir personas en un video, excluir otros elementos.
 	\item Generar características que permitan luego re identificar personas perdidas.
+	\item El sistema debe entregar como resultado un archivo con los datos de deteccin, seguimiento y características en formato JSON.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con el Engine:
 	\begin{enumerate}
-	\item Llevar el seguimiento de la persona a lo largo del recinto.
-	\item Medir el comportamiento de cada persona con diferentes áreas de interés definidas en la aplicación.
+	\item Consumir e interpretar los datos provenientes del pipeline de IA.
 	\item Resolver problemáticas en el seguimiento de las personas utilizando sus características.
+	\item Medir el comportamiento de cada persona con diferentes áreas de interés definidas en la aplicación.
+	\item El sistema debe entregar como resultado un JSON que toda la informacin de interés a ser consumida por la aplicacin web.
 	\end{enumerate}
 \item Grupo de requerimientos asociados con la aplicación web:
 \begin{enumerate}
 	\item Mediante una interfaz web poder definir las zonas de interés en el espacio.
+	\item Consumir e interpretar los datos provenientes del pipeline de IA.
 	\item El sistema debe llevar el correcto seguimiento de la persona en el recinto durante al menos el 80\% del tiempo que circuló por el mismo (que apareció en el video).
 	\item El sistema debe garantizar que entre el 80\% y 100\% de las personas en el video fueron correctamente monitoreadas.
 	\item Poder observar en tiempo real los datos que se obtienen de cada persona y las zonas definidas.
