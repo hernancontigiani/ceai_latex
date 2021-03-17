@@ -265,37 +265,49 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Desarrollo del pipeline IA. (368hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Obtener y analizar videos. (48hs)
+	\item Ensayo de modelos de detección y trackeo. (40hs)
+	\item Ensayo del extractor de características DeepMAR. (40hs)
+	\item Ensayo del extractor de características OsNet. (40hs)
+	\item Integración del extractor de características en el pipeline de detección. (40hs)
+	\item Ensayos de integración profunda del extractor con el tracker. (40hs)
+	\item Integrar al pipeline modelo para la predicción de poses de la persona. (20hs)
+	\item Armar el dataset para el entranamiento del modelo extractorcon Tensorflow (TF). (40hs)
+	\item Entrenar y ensayar el modelo extractor en TF (TF). (40hs)
+	\item Comparativas entre los modelos extratores entrenados con los modelos pre-entrenados obtenidos en la web. (20hs)	
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Desarrollo del Engine de seguimiento. (160hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Desarrollo del sistema de clustering para la reidentificación de personas. (40hs)
+	\item Definir las zonas de interés a partir de un JSON o archivo. (20hs)
+	\item Ubicar las personas en el plano relativo a la imagen, a fin de determinar su ubicación en el recinto (20hs)
+	
+	\item Realizar lógica de detección dentro de zonas. (20hs)
+	\item Desarrollar las APIs para integrar el Engine con dashboard o applicación web. (20hs)
+	\item Mejorar la accuracy del sistema analiizando casos de borde (40hs)	
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Desarrollo del dasboard/web app. (140hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Desarrollar la intefaz de usuario para definir las zonas de interés sobre una imagen (40hs)
+	\item Desarrollar las APIs de comunicación con el Engine. (20hs)
+	\item Desarrollar la interfaz de visualización de las métricas de las personas. (40hs)
+	\item Desarrollar la interfaz de visualización de la personas en la tienda en tiempo real. (40hs)
+	\end{enumerate}
+\item Presentación del trabajo. (100hs)
+	\begin{enumerate}
+	\item Redacción del informe de avance. (20hs)
+	\item Redacción de las memorias del proyecto. (60hs)
+	\item Preparación de la presentación pública. (20hs)
 	\item Tarea 4 (tantas hs)
 	\item Tarea 5 (tantas hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: (768hs)
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
