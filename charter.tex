@@ -21,7 +21,7 @@
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Globant}
+\cliente{Technical Leader}
 \empresaCliente{Globant}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -84,7 +84,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en utilizar computer vision y deep learning para obtener información sobre el comportamiento de personas/clientes dentro de un recinto, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en utilizar computer vision y deep learning para obtener información sobre el comportamiento de personas/clientes dentro de un recinto, y tendrá un presupuesto preliminar estimado de 748 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -109,7 +109,7 @@ Se adjunta a esta acta la planificación inicial.
 
 El sistema de monitoreo de comportamiento de personas (PBT) tiene como objetivo estudiar los movimientos que realiza una persona al ingresar a un espacio, a fin de obtener métricas sobre los lugares del local que visitó, cuánto tiempo permaneció en el recinto y si transitó por alguna zona de interés predefinida.
 
-Para poder cumplir con el objetivo de estudiar el comportamiento de las personas dentro de un espacio es necesario poder detectar a las distintas personas en el, realizar un seguimiento de cada una y poder identificarlas aún cuando desaparecen del espacio de visión por unos segundos.
+Para poder cumplir con el objetivo de estudiar el comportamiento de las personas dentro de un espacio es necesario poder detectar a las distintas personas, realizar un seguimiento de cada una y poder identificarlas aún cuando desaparecen del espacio de visión por unos segundos.
 
 Para poder alcanzar el objetivo planteado se debe construir un pipeline de inteligencia artificial como se observa en la Figura \ref{fig:diagBloques}, el cual está comformado por un detector de personas, un tracker (seguidor) y un sistema que permita extraer características (embeddings) que luego el Engine utilizará para poder identificar personas que hayan salido del rango de visión por oclusiones o fuera de imagen.
 
@@ -124,9 +124,9 @@ Para poder alcanzar el objetivo planteado se debe construir un pipeline de intel
 
 El objetivo principal del Engine es identificar a cada persona con un “id” único y analizar sus movimientos dentro del reciento, como también debe resolver las siguientes problemáticas:
 \begin{itemize}
-\item Resolver que una persona salga y entre del rango de visión, el sistema la debe identificar como la misma persona.
+\item Resolver que una persona salga y entre del rango de visión, y en dicho caso, el sistema la debe identificar como la misma persona.
 \item Resolver las oclusiones que puedan llegar a ocurrir (personas que tapan a otras personas en el rango de visión).
-\item Mantener el id correcto entre las personas, evitar que los “id” se intercambien.
+\item Mantener el id correcto entre las personas y evitar que los “id” se intercambien.
 \end{itemize}
 
 \newpage
@@ -136,7 +136,7 @@ Toda la información recolectada por el Engine será enviada a una aplicación w
 \begin{itemize}
 \item Detector: Se utilizará el modelo pre-entrenado “Yolo” como detector por excelencia para detectar personas en una imagen/video. Se utilizará la versión completa de Yolo, a fin de obtener la mayor precisión posible.
 \item Tracker: Se utilizará el modelo pre-entrenado “DeepSort” como tracker por excelencia para asignar un primer “id” tentativo utilizando flujo óptimo, técnicas de seguimiento de patrones (Mean Shift) y un clasificador básico para resolver oclusiones momentáneas.
-\item Extractor de características: Se ensayarán diferentes alternativas como extractor de atributos, extractor de vectores de personas, clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
+\item Extractor de características: Se ensayarán diferentes alternativas como extractor de atributos, extractor de vectores de personas, clasificadores de imágenes entrenados con datasets de personas, etc. Sea cual sea el modelo definitivo que se utilice, el objetivo es obtener un vector de características de cada persona detectada que permita al Engine identificar a las personas en el recinto.
 \end{itemize}
 
 \textbf{NOTA}: Las redes generadores de vectores (extractor) ya se encuentran pre entrenadas con datasets de personas y los modelos/pesos están disponibles en internet. Por una cuestión académica y reforzar este trabajo se realizará el entrenamiento fine-tuning de la red seleccionada como extractor, para luego comparar contra el modelo utilizado disponible en internet. Los datasets más utilizados para este propósito son el Market 1051 y DukeMTMC-reID.
@@ -173,7 +173,7 @@ Nota: Por motivos de confidencialidad no puedo mencionar el nombre del auspician
 
 El propósito de este proyecto es obtener métricas de los movimientos que realiza una persona al ingresar a un espacio, a fin de obtener los siguientes indicadores:
 \begin{itemize}
-\item Determinan cuántas personas se encuentran en el espacio de interés.
+\item Determinar cuántas personas se encuentran en el espacio de interés.
 \item Determinar zonas de interés en el espacio y determinar cuántas y cuales personas transitaron por este. Las zonas de interés se dibujarán con polígonos en la imagen que representará al espacio de interés.
 \item Determinar cuánto tiempo las personas estuvieron dentro del espacio y las diferentes zonas de interés.
 \item Determinar cuando una persona abandona el espacio.
@@ -183,7 +183,7 @@ El propósito de este proyecto es obtener métricas de los movimientos que reali
 \label{sec:alcance}
 Todas las pruebas se realizarán sobre videos (mp4) públicos, en donde haya un grupo de personas que permita su estudio de comportamiento. Se utilizarán videos que se acerquen lo mayor posible a un video que podría obtenerse de una cámara de seguridad de una tienda o un espacio. En caso de que la empresa consiga videos que puedan ayudar al problema, estos no podrán compartirse a menos que la empresa lo permita y en todo caso sólo se mostrarán los resultados o métricas alcanzadas en el dashboard. El dashboard \textbf{no mostrará el streaming de video} sino una representación del espacio y las métricas sobre el comportamiento de las personas monitoreadas.
 
-Para la elaboración de este proyecto la parte del pipeline correspondiente al Detector + Tracker + Extractor se ejecutará en Colab. Se consumirá un video pregrabado mp4 el cual generará un archivo JSON con todos los datos recolectados del video que serán los inputs para el Engine para que este luego los consuma finalizado este proceso. El Engine correrá en una máquina local o dispositivo dedicado utilizando como entrada el archivo de datos, y la aplicación web dashboard  en una máquina local o servicio en la nube conectada al Engine en real-time (a medida que el Engine consume el archivo y genera información, los resultados se verán reflejados en la App).
+Para la elaboración de este proyecto la parte del pipeline correspondiente al Detector + Tracker + Extractor se ejecutará en Colab. Se consumirá un video pregrabado mp4 el cual generará un archivo JSON con todos los datos recolectados del video que serán los inputs del Engine para que este luego los consuma finalizado este proceso. El Engine correrá en una máquina local o dispositivo dedicado utilizando como entrada el archivo de datos, y la aplicación web dashboard  en una máquina local o servicio en la nube conectada al Engine en real-time (a medida que el Engine consume el archivo y genera información, los resultados se verán reflejados en la App).
 
 \begin{figure}[htpb]
 \centering 
@@ -204,8 +204,8 @@ Para el desarrollo del presente proyecto se supone que:
 \item Todo el proceso ejecutado en Colab no será real-time, la salida del sistema será un archivo que consuma luego el Engine.
 \item En esta fase no se invertirá en hardware, se contará con Colab para el procesamiento pesado en GPU.
 \item En esta etapa del proyecto no se realizará el deploy del sistema en ningún sistema embebido o servidor, se mantendrá todo en un entorno controlado de desarrollo (Colab + computadora personal).
-\item Se utilizá diferentes videos que representen un escenario clásico de un local, tienda, recinto.
-\item En esta fase no será requerido realizar corrección de imagen o deformación de los videos adquiridos, se buscará videos sin deformaciones.
+\item Se utilizá diferentes videos que representen un escenario clásico de un local, tienda o recinto.
+\item En esta fase no será requerido realizar corrección de imagen o deformación de los videos adquiridos, se buscaran videos sin deformaciones.
 \item No se espera realizar el correcto seguimiento del 100\% de las personas, se establecerá un margen de aceptación para ello.
 \item No se espera evitar problemas que surjan por movimientos o comportamientos de las personas que salgan de lo normal esperado.
 \end{itemize}
@@ -266,7 +266,7 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \label{sec:wbs}
 
 \begin{enumerate}
-\item Desarrollo del pipeline IA. (368hs)
+\item Desarrollo del pipeline IA. (348hs)
 	\begin{enumerate}
 	\item Obtener y analizar videos. (48hs)
 	\item Ensayo de modelos de detección y trackeo. (40hs)
@@ -275,8 +275,8 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 	\item Integración del extractor de características en el pipeline de detección. (40hs)
 	\item Ensayos de integración profunda del extractor con el tracker. (40hs)
 	\item Integrar al pipeline un modelo para la predicción de poses de la persona. (20hs)
-	\item Armar el dataset para el entrenamiento del modelo extractor con Tensorflow (TF). (40hs)
-	\item Entrenar y ensayar el modelo extractor en TF (TF). (40hs)
+	\item Armar el dataset para el entrenamiento del modelo extractor con Tensorflow (TF). (30hs)
+	\item Entrenar y ensayar el modelo extractor en TF. (30hs)
 	\item Comparativas entre los modelos extractores entrenados con los modelos pre-entrenados obtenidos en la web. (20hs)	
 	\end{enumerate}
 \item Desarrollo del Engine de seguimiento. (160hs)
@@ -284,10 +284,9 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 	\item Desarrollo del sistema de clustering para la re identificación de personas. (40hs)
 	\item Definir las zonas de interés a partir de un JSON o archivo. (20hs)
 	\item Ubicar las personas en el plano relativo a la imagen, a fin de determinar su ubicación en el recinto (20hs)
-	
 	\item Realizar lógica de detección dentro de zonas. (20hs)
 	\item Desarrollar las APIs para integrar el Engine con dashboard o aplicación web. (20hs)
-	\item Mejorar el accuracy del sistema analizando casos de borde (40hs)	
+	\item Mejorar el accuracy del sistema analizando casos de borde (40hs)
 	\end{enumerate}
 \item Desarrollo del dasboard/web app. (140hs)
 	\begin{enumerate}
@@ -304,7 +303,7 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (768hs)
+Cantidad total de horas: (748hs)
 
 
 \section{7. Diagrama de Activity On Node}
