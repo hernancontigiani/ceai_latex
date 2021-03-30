@@ -335,130 +335,65 @@ Cantidad total de horas: (748hs)
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
+En el la Figura \ref{fig:diagAoN} se ilustra el diagrama Activity On Node, la ruta crítica es resaltada en cuadros rojos. Aunque solo se cuenta con un recurso humano a lo largo del proyecto, se ejecutan tareas relacionadas en paralelo.
+\begin{enumerate}
+\item Las tareas están expresadas en horas.
+\item La duración del camino crítico es de 380 horas.
+\end{enumerate}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
+\includegraphics[width=1.\textwidth]{./Figuras/diagAoN.png}
+\caption{Diagrama Activity On Node}
+\label{fig:diagAoN}
 \end{figure}
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
-
+\newpage
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+En la Figura \ref{fig:ganttTable} y Figura \ref{fig:ganttTimeline} se ve el diagrama de gantt dividido en la tabla de tareas y la línea de tiempo.
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.\textwidth]{./Figuras/ganttTable.png}
+\caption{Tabla de tareas Gantt}
+\label{fig:ganttTable}
 \end{figure}
 
-\end{consigna}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.\textwidth]{./Figuras/ganttTimeline.png}
+\caption{Diagrama de Gantt}
+\label{fig:ganttTimeline}
+\end{figure}
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
 
 
-\begin{table}
+\begin{table}[htpb]
 \label{tab:recursos}
 \centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|c|@{}}
+\begin{tabularx}{\linewidth}{@{}|c|X|c|c|c|c|@{}}
 \hline
 \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre de la tarea\end{tabular}} & Colab & PC & Youtube & Simulador \\ \hline
+ 1.1& Analizar videos y resultados	&  		&	&  30	& 18 \\ \hline
+ 1 	& Desarrollo Piepline IA 	&   300 &  		&  		&  \\ \hline
+ 2	& Desarrollo del Engine de seguimiento &  & 160  &  &  \\ \hline
+ 3	& Desarrollo del dashboard / web app & & 140 &  &  \\ \hline
 
 \end{tabularx}%
 \end{table}
 
+*Simulador será cualquier programa o aplicación que permita obtener videos de muestra fuera de lo que es posible conseguir en canales como youtube, a fin de probar un escenario más cercano al layout de una tienda y poder generar videos más largos. Como posible simulador se podrá utilizar sistemas de renderizado 3D o juegos como el Sims.
+
+\newpage
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
-
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
 
 \begin{table}[htpb]
 \centering
@@ -471,14 +406,14 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+Horas de ingeniería &
+  \multicolumn{1}{c|}{648 horas} &
+  \multicolumn{1}{c|}{\$6 USD} &
+  \multicolumn{1}{c|}{\$3888 USD} \\ \hline
+Computadora personal &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$800 USD} &
+  \multicolumn{1}{c|}{\$800 USD} \\ \hline
 \multicolumn{1}{|l|}{} &
    &
    &
@@ -488,7 +423,7 @@ Descripción &
    &
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$4688 USD} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -496,22 +431,22 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+Licencia del sistema de gestión &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$14 USD} &
+  \multicolumn{1}{c|}{\$14 USD} \\ \hline
+Costo de almacenamiento 100G &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$20 USD} &
+  \multicolumn{1}{c|}{\$20 USD} \\ \hline
 \multicolumn{1}{|l|}{} &
    &
    &
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$34 USD} \\ \hline
 \rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
+\multicolumn{3}{|c|}{TOTAL} & \$4722 USD
    \\ \hline
 \end{tabularx}%
 \end{table}
@@ -519,8 +454,6 @@ Descripción &
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
 
 \begin{table}[htpb]
 \centering
@@ -543,16 +476,17 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
-  Nombre de alguien &
-  \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+  \clientename &
+  Usuario \\ \hline
+ 1 & Desarrollo Piepline IA & P & A & I &  \\ \hline
+ 2 & Desarrollo del Engine & P & I & A &  \\ \hline
+ 3 & Desarrollo del dashboard & P & I & A & C \\ \hline
+ 4 & Presentación del trabajo & P & A & I &  \\ \hline
 \end{tabular}%
 }
 \end{table}
 
-{\footnotesize
+
 Referencias:
 \begin{itemize}
 	\item P = Responsabilidad Primaria
@@ -561,14 +495,8 @@ Referencias:
 	\item I = Informado
 	\item C = Consultado
 \end{itemize}
-} %footnotesize
 
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
+\newpage
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
