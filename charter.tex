@@ -68,6 +68,7 @@ Revisión & {1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} 
 		   Historias de usuario											   & 22/03/2021 \\ \hline
 1.3      & Modificaciones basadas en las devoluciones \newline
 		   Gestión del tiempo y los requerimientos								   & 30/03/2021 \\ \hline
+1.4      & Completar los últimos puntos de la planificación & 06/04/2021 \\ \hline
 %		   En varias líneas \newline
 %		   A propósito                                                     %& dd/mm/aaaa \\ \hline
 \end{tabularx}
@@ -523,14 +524,14 @@ Riesgo 1: No disponer del material en video necesario para validar todas las fun
 
 Riesgo 2: No alcanzar las métricas pautadas para el sistema de seguimiento.
 \begin{itemize}
-\item Severidad (S): Este riesgo tiene una severidad alta porque uno de los factores más importantes del proyecto es la eficiencia de seguimiento. (8)
-\item Ocurrencia (O): La probabilidad de este riesgo es baja porque antes de comenzar el proyecto se analizó de que fuera posible alcanzar las métricas pautadas, y en caso de existir una limitación por el layout del local se acotará el área de monitoreo al área efectiva. (4)
+\item Severidad (S): Este riesgo tiene una severidad alta porque uno de los factores más importantes del proyecto es la precisión de seguimiento. (8)
+\item Ocurrencia (O): La probabilidad de este riesgo es baja porque antes de comenzar el proyecto se analizó de que fuera factible alcanzar las métricas pautadas, y en caso de existir una limitación por el layout del local se acotará el área de monitoreo al área efectiva con mayor precisión. (4)
 \end{itemize}
 
 Riesgo 3: No poder re identificar aquellas personas que al salir y entrar en cámara cambian su apariencia o vestimenta.
 \begin{itemize}
 \item Severidad (S): Este riesgo tiene una severidad baja porque parte del margen del sistema contempla estos casos de borde (4).
-\item Ocurrencia (O): La probabilidad de este riesgo es muy baja porque justo se tiene que dar el caso de que la persona cambie su apariencia fuera de cámara, mientras la persona esté en el área de visión el tracker mantendrá el correcto seguimiento a pesar de cambiar de apariencia. (2)
+\item Ocurrencia (O): La probabilidad de este riesgo es muy baja porque justo se tiene que dar el caso de que la persona cambie su apariencia fuera de cámara, Mientras la persona esté en el área de visión, el tracker mantendrá el correcto seguimiento a pesar de cambiar su apariencia. (2)
 \end{itemize}
 
 Riesgo 4: No sea posible entrenar el modelo OsNet en Colab.
@@ -543,7 +544,7 @@ Riesgo 4: No sea posible entrenar el modelo OsNet en Colab.
 
 Riesgo 5: No cumplir con las fechas estimadas de desarrollo del proyecto.
 \begin{itemize}
-\item Severidad (S): Este riesgo tiene una severidad media porque es una de las tantas líneas de desarrollo que el auspiciante está evaluando. (6)
+\item Severidad (S): Este riesgo tiene una severidad alta porque los recursos dedicados a este proyecto tienen futuras asignaciones concluida esta etapa. (8)
 \item Ocurrencia (O): La probabilidad de este riesgo es baja porque hasta el momento el proyecto cumplió con todas las fechas importantes. (4)
 \end{itemize}
 
@@ -560,7 +561,7 @@ Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
    No alcanzar las métricas pautadas para el sistema de seguimiento    &  8  & 4   &  32   &  8  &   3 &   24   \\ \hline
    No poder re identificar personas que cambian de apariencia    &  4  & 2   &   8  &   - &  -  &  -    \\ \hline
    No sea posible entrenar el modelo OsNet en Colab    &  2  & 10  &  20   &  -  & -   &  -    \\ \hline
-   No cumplir con las fechas estimadas    &  6  & 4   &  24   &  -  & -   &  -    \\ \hline
+   No cumplir con las fechas estimadas    &  8  & 4   &  32   &  8  & 2   &  16    \\ \hline
 \end{tabularx}%
 \end{table}
 
@@ -577,10 +578,16 @@ Riesgo 1: Como plan de mitigación se utilizarán simuladores o programas de ren
 \item Probabilidad de ocurrencia (O): La probabilidad de este riesgo baja bastante, porque aquello que no pueda ser evaluado con videos reales se llevará a prueba en modelos de renderizado y entornos controlados. (2)
 \end{itemize}
 
-Riesgo 2: Como plan de mitigación está planificado una historia de usuario para contemplar los casos de borde en el sistema y así aumentar la eficiencia lo más posible.
+Riesgo 2: Como plan de mitigación está planificado una historia de usuario para contemplar los casos de borde en el sistema y así aumentar la precisión lo más posible.
 \begin{itemize}
 \item Severidad (S): La severidad de este riesgo sigue siendo la misma. (8).
 \item Probabilidad de ocurrencia (O): La probabilidad de este riesgo baja muy poco ya que estamos hablando de un trabajo fino, pero se reduce lo suficiente para alcanzar las métricas deseadas. (3)
+\end{itemize}
+
+Riesgo 5: Como plan de mitigación se realizarán reuniones semanales atacar cualquier problema o improvisto a tiempo.
+\begin{itemize}
+\item Severidad (S): La severidad de este riesgo sigue siendo la misma. (8).
+\item Probabilidad de ocurrencia (O): La probabilidad de este riesgo baja ya que se llevará un control semanal del avance del proyecto. (2)
 \end{itemize}
  
 \newpage
