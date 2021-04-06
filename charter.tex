@@ -512,27 +512,39 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+A lo largo del proyecto se hacen visibles los siguientes riesgos de los cuales se presenta una gestión
+de los mismos.
  
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
+Riesgo 1: No disponer del material en video necesario para validar todas las funcionalidades del sistema.
 \begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
+\item Severidad (S): Este riesgo tiene una severidad alta porque se depende del material en video encontrado para poder validar el pipeline de IA y las funcionalidades que se describen en el proyecto. (10).
+\item Probabilidad de ocurrencia (O): La probabilidad de este riesgo es alta porque es muy común en proyectos de inteligencia artificial que no se cuenten con tantos datos como los que se deseara. (8)
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: No alcanzar las métricas pautadas para el sistema de seguimiento.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): Este riesgo tiene una severidad alta porque uno de los factores más importantes del proyecto es la eficiencia de seguimiento. (8)
+\item Ocurrencia (O): La probabilidad de este riesgo es baja porque antes de comenzar el proyecto se analizó de que fuera posible alcanzar las métricas pautadas, y en caso de existir una limitación por el layout del local se acotará el área de monitoreo al área efectiva. (4)
 \end{itemize}
 
-Riesgo 3:
+Riesgo 3: No poder re identificar aquellas personas que al salir y entrar en cámara cambian su apariencia o vestimenta.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): Este riesgo tiene una severidad baja porque parte del margen del sistema contempla estos casos de borde (4).
+\item Ocurrencia (O): La probabilidad de este riesgo es muy baja porque justo se tiene que dar el caso de que la persona cambie su apariencia fuera de cámara, mientras la persona esté en el área de visión el tracker mantendrá el correcto seguimiento a pesar de cambiar de apariencia. (2)
+\end{itemize}
+
+Riesgo 4: No sea posible entrenar el modelo OsNet en Colab.
+\begin{itemize}
+\item Severidad (S): Este riesgo tiene una severidad muy baja porque el entrenamiento del modelo OsNet es unicamente con fin académico. (2)
+\item Ocurrencia (O): La probabilidad de este riesgo es alta porque los recursos de Colab son limitados. (10)
+\end{itemize}
+
+\newpage
+
+Riesgo 5: No cumplir con las fechas estimadas de desarrollo del proyecto.
+\begin{itemize}
+\item Severidad (S): Este riesgo tiene una severidad media porque es una de las tantas líneas de desarrollo que el auspiciante está evaluando. (6)
+\item Ocurrencia (O): La probabilidad de este riesgo es baja porque hasta el momento el proyecto cumplió con todas las fechas importantes. (4)
 \end{itemize}
 
 
@@ -544,55 +556,97 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+   No disponer del material en video necesario    & 10  & 8   &  80   &  10  &  2  &  20    \\ \hline
+   No alcanzar las métricas pautadas para el sistema de seguimiento    &  8  & 4   &  32   &  8  &   3 &   24   \\ \hline
+   No poder re identificar personas que cambian de apariencia    &  4  & 2   &   8  &   - &  -  &  -    \\ \hline
+   No sea posible entrenar el modelo OsNet en Colab    &  2  & 10  &  20   &  -  & -   &  -    \\ \hline
+   No cumplir con las fechas estimadas    &  6  & 4   &  24   &  -  & -   &  -    \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
+
+Riesgo 1: Como plan de mitigación se utilizarán simuladores o programas de renderizado 3D para poner a prueba todas las funciondalidades del sistema.
+\begin{itemize}
+\item Severidad (S): La severidad de este riesgo sigue siendo la misma. (10).
+\item Probabilidad de ocurrencia (O): La probabilidad de este riesgo baja bastante, porque aquello que no pueda ser evaluado con videos reales se llevará a prueba en modelos de renderizado y entornos controlados. (2)
+\end{itemize}
+
+Riesgo 2: Como plan de mitigación está planificado una historia de usuario para contemplar los casos de borde en el sistema y así aumentar la eficiencia lo más posible.
+\begin{itemize}
+\item Severidad (S): La severidad de este riesgo sigue siendo la misma. (8).
+\item Probabilidad de ocurrencia (O): La probabilidad de este riesgo baja muy poco ya que estamos hablando de un trabajo fino, pero se reduce lo suficiente para alcanzar las métricas deseadas. (3)
+\end{itemize}
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
-
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+\newpage
  
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
-
-
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
-
-Verificación y validación:
-
+\item Req \#1.1: Detectar y seguir personas en un video, excluir otros elementos.
 \begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+\item Verificación: consumir un video y verificar visualmente que solamente sean detectadas personas. 
+\item Validación: Realizar un video post procesado de salida que verifique que solo son detectadas personas en el video.  
+\end{itemize}
 \end{itemize}
 
+\begin{itemize} 
+\item Req \#1.2: Generar características que permitan luego re identificar personas perdidas.
+\begin{itemize}
+\item Verificación: Ensayar los diferentes extractores de características propuestos y medir cual de ellos arroja mejores métricas de características. Con dicho extractor calcular si la distancia entre vectores que caracterizan a diferentes personas es mayor a la distancia entre vectores que pertenecen a una misma persona (evaluar que tan diferentes son los vectores de distintas personas vs los vectores de una misma persona).
+\item Validación: Realizar un video en donde se vea como el sistema identifica a cada persona en el video utilizando unicamente los vectores obtenidos de estas.
+\end{itemize}
 \end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.
+\begin{itemize} 
+\item Req \#1.3 y Req \#2.1: El sistema debe entregar como resultado un archivo con los datos de detección, seguimiento y características en formato JSON y ser consumido por el Engine.
+\begin{itemize}
+\item Verificación: Exportar en un archivo JSON la salida del pipeline de IA con los datos de detección, seguimiento y características para luego consumir dicho archivo con el Engine y validar que encuentra correctamente a las personas en el video.
+\item Validación: Realizar un video en donde se vea la salida obtenida desde el Engine, validando la detección y el seguimiento de las personas en le video.
+\end{itemize}
+\end{itemize}
 
-\end{consigna}
+\begin{itemize} 
+\item Req \#2.3: Medir el comportamiento de cada persona con diferentes áreas de interés definidas en la aplicación.
+\begin{itemize}
+\item Verificación: Observar los logs de la consola y verificar que la persona fue efectivamente detectada dentro de cada zona definida.
+\item Validación: Realizar un video en donde la caja que representa a cada persona se pinte del color de cada zona al ingresar a esta.
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req \#3.3: Se considerará que una persona es correctamente monitoreada si al menos se mantuvo su seguimiento el 80\% del tiempo que circulo en el recinto.
+\begin{itemize}
+\item Verificación: Observar los logs de las métricas de cada persona y verificar el cumplimiento de dicha métrica.
+\item Validación: Realizar un gráfico con el porcentaje de detección de cada persona y verificar el cumplimiento de dicha métrica.
+\end{itemize}
+\end{itemize}
+
+\newpage
+
+\begin{itemize} 
+\item Req \#3.4: Se considerará que el sistema funciona dentro de los parámetros aceptables si entre el 80\% y el 100\% de las personas en el video fueron correctamente monitoreadas.
+\begin{itemize}
+\item Verificación: Observar los logs de las métricas de cada persona y verificar el cumplimiento de dicha métrica.
+\item Validación: Realizar un gráfico con el porcentaje de detección de cada persona y verificar el cumplimiento de dicha métrica.
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req \#4.2 y Req \#4.3: El sistema no asociará a las personas en el video con una persona física, se hará referencia a las mismas con un número incremental asociado a la base de datos.
+\begin{itemize}
+\item Verificación: Observar la base de datos con todos los IDs generados.
+\item Validación: Visualizar en la interfaz de la aplicación el seguimiento de las personas por números.
+\end{itemize}
+\end{itemize}
+
+\newpage
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
@@ -607,32 +661,22 @@ El plan de comunicación del proyecto es el siguiente:
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+ Avances de Plan de trabajo    &  Clase Gestión de Proyectos & Evitar errores y recibir feedback & Semanal  &  Correo y formulario                    &  \authorname            \\ \hline
+  Avances del proyecto  &   \clientename        &  Avance semanal          &   Semanal   &   Video llamada  &    \authorname          \\ \hline
+  Avances de validación y verificación & Director de proyecto          &  Avance y resultados         &   Mensual         &   Video llamada                   &       \authorname       \\ \hline
+  Presentación final del proyecto              &   Jurados y Director        &  Definición y puesta en común         &  Única vez          &            Presentación y memorias del proyecto          &   \authorname          \\ \hline
 \end{tabularx}
 \end{table}
 
 \section{15. Gestión de compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
-\end{consigna}
+No es requerido realizar ningún tipo de compra para este proyecto.
+
+\newpage
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
-
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
-
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
-
-\end{consigna}
 
 \begin{longtable}{|m{1cm}|m{3.5cm}|m{2.2cm}|m{2cm}|m{3cm}|m{1.5cm}|}
 \hline
@@ -654,45 +698,22 @@ Tarea del WBS 			& Indicador de avance & Frecuencia de reporte & Resp. de seguim
 
 \endlastfoot
 
-1.1	& Fecha de inicio  & Única vez al comienzo & \authorname & \clientename, \supname & email \\ \hline
-2.1	& Avance de las subtareas  & Mensual mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+1	& Pipeline IA completo al 54\%, pendiente entrenamiento de OsNet y obtener videos simulados  & Semanal & \authorname & \clientename, \supname & email \\ \hline
+2	& Engine completo al 50\%, pendiente el desarrollo de APIs para integrar con la app web y analizar casos de borde & Semanal & \authorname & \clientename, \supname & email \\ \hline
+3	& El desarrollo de la applicación web no ha comenzado (0\%) & Mensual & \authorname & \clientename, \supname & email \\ \hline
+4	& Presentación del trabajo final (0\%) & Mensual & \authorname & \clientename, \supname & email \\ \hline
 
 \end{longtable}
-
-\begin{table}[!htpb]
-\centering
-%\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
-\begin{tabularx}{\linewidth}{@{}|X|C{2.5cm}|C{3cm}|C{2cm}|C{2cm}|C{2.5cm}|@{}}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-%}
-\end{table}
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+A continuación se describen las pautas que darán cierre al proyecto:
 
 \begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
+\item Reunión por video llamada con el director y el líder del proyecto a fin de analizar las conclusiones del proyecto, retrospectiva y revisión para futuros trabajos.
+\item Presentación y demostración del proyecto ante jurados mediante diapositivas y/o vídeos.
 \end{itemize}
-
-\end{consigna}
 
 
 \end{document}
